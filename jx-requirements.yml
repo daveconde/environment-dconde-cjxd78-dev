@@ -1,39 +1,83 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: dconde-cjxd78
+  devEnvApprovers:
+  - daveconde
+  environmentGitOwner: daveconde
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: apps-dev-229310
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: europe-west1-b
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    domain: 34.77.129.16.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-dconde-cjxd78-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-dconde-cjxd78-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-dconde-cjxd78-production
+gitops: true
 ingress:
-  domain: ""
+  domain: 34.77.129.16.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://dconde-cjxd78-logs-cc53c152-e37a-48dd-9c07-e8d4c984bebd
   reports:
     enabled: true
-    url: ""
+    url: gs://dconde-cjxd78-reports-a3f01ef7-31fb-4add-bc45-2ebb13351
   repository:
     enabled: true
-    url: ""
+    url: gs://dconde-cjxd78-repository-c15c7e92-91c2-4154-b2ea-473e33
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: 2.0.1192+cjxd.7
+  ref: v0.0.28.1
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow

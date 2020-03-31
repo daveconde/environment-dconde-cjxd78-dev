@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:dconde-cjxd78/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: dconde@cloudbees.com
+  token: vault:dconde-cjxd78/pipelineUser:token
+  username: daveconde
+prow:
+  hmacToken: vault:dconde-cjxd78/prow:hmacToken
